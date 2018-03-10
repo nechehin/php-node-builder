@@ -1,4 +1,4 @@
-FROM node:8.9-alpine
+FROM node:8.10-alpine
 
 LABEL maintainer "e.nechehin <e.nechehin@gmail.com>"
 
