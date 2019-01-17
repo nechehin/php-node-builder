@@ -2,7 +2,7 @@ FROM node:8.10-alpine
 
 LABEL maintainer "e.nechehin <e.nechehin@gmail.com>"
 
-ARG COMPOSER_VERSION=1.6.2
+ARG COMPOSER_VERSION=1.8.0
 
 WORKDIR /home/node
 
