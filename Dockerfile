@@ -1,8 +1,8 @@
-FROM node:8.15-alpine
+FROM node:14.11-alpine
 
 LABEL maintainer "e.nechehin <e.nechehin@gmail.com>"
 
-ARG COMPOSER_VERSION=1.8.4
+ARG COMPOSER_VERSION=1.10.13
 
 WORKDIR /home/node
 
