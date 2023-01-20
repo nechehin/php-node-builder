@@ -1,2 +1,2 @@
 build:
-	docker build -t nechehin/php-node-builder .
+	docker build -t nechehin/app-builder .

@@ -1,7 +1,5 @@
 # php-node-builder
 Alpine docker image with:
-- php, composer
-- node 8, yarn, nodemon
-- python
+- php8, composer2
+- node 16, yarn, nodemon
 - rsync, sshpass
-- deployer

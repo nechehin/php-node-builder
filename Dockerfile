@@ -1,49 +1,44 @@
-FROM node:14.11-alpine
+FROM node:16-alpine3.16
 
 LABEL maintainer "e.nechehin <e.nechehin@gmail.com>"
 
-ARG COMPOSER_VERSION=1.10.13
-
 WORKDIR /home/node
 
-RUN apk add -U \
-    php7 \
-    php7-dev \
-    php7-common \
-    php7-apcu \
-    php7-bcmath \
-    php7-xmlwriter \
-    php7-ctype \
-    php7-curl \
-    php7-exif \
-    php7-fileinfo \
-    php7-iconv \
-    php7-imagick \
-    php7-intl \
-    php7-json \
-    php7-gmp \
-    php7-mbstring \
-    php7-opcache \
-    php7-openssl \
-    php7-pcntl \
-    php7-mysqlnd \
-    php7-pdo \
-    php7-pdo_mysql \
-    php7-pdo_pgsql \
-    php7-phar \
-    php7-posix \
-    php7-session \
-    php7-xml \
-    php7-simplexml \
-    php7-mcrypt \
-    php7-xsl \
-    php7-zip \
-    php7-zlib \
-    php7-dom \
-    php7-redis \
-    php7-fpm \
-    php7-tidy \
-    php7-tokenizer \
+RUN apk --no-cache add -U \
+    php8 \
+    php8-dev \
+    php8-common \
+    php8-apcu \
+    php8-bcmath \
+    php8-xmlwriter \
+    php8-ctype \
+    php8-curl \
+    php8-exif \
+    php8-fileinfo \
+    php8-iconv \
+    php8-intl \
+    php8-json \
+    php8-gmp \
+    php8-mbstring \
+    php8-opcache \
+    php8-openssl \
+    php8-pcntl \
+    php8-mysqlnd \
+    php8-pdo \
+    php8-pdo_mysql \
+    php8-phar \
+    php8-posix \
+    php8-session \
+    php8-xml \
+    php8-simplexml \
+    php8-xsl \
+    php8-zip \
+    php8-zlib \
+    php8-dom \
+    php8-redis \
+    php8-fpm \
+    php8-tidy \
+    php8-tokenizer \
     bash \
     openssh \
     curl \
@@ -51,16 +46,14 @@ RUN apk add -U \
     git \
     rsync \
     sshpass \
-    python \
     g++ \
     make \
     gifsicle \
     libpng-dev \
     optipng \
     && npm install nodemon -g \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=${COMPOSER_VERSION} \
-    && composer selfupdate \
-    && curl -LO https://deployer.org/deployer.phar \
-    && mv deployer.phar /usr/local/bin/dep \
-    && chmod +x /usr/local/bin/dep \
+    && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+    && php composer-setup.php \
+    && php -r "unlink('composer-setup.php');" \
+    && mv composer.phar /usr/local/bin/composer \
     && rm -rf /var/cache/* /tmp/*
